@@ -47,7 +47,7 @@ Una vez cargado el archivo pulsaremos al boton de **Instanciar/Deploy**
 <img width="1632" height="682" alt="image" src="https://github.com/user-attachments/assets/69f8e1c0-2ea9-4484-bdb8-019c2d943c95" />
 
 ## Uso de la interfaz
-Para hacer uso cambiaremos `http://127.0.0.1:1880/#flow/91d8e7385a2e2b66` por `http://127.0.0.1:1880/ui` y en la parte de grupo seleccionaremos el grupo para leer solo los mensajes de ese grupo.
+Para hacer uso de la interfaz, cambiaremos `http://127.0.0.1:1880/#flow/91d8e7385a2e2b66` por `http://127.0.0.1:1880/ui`, en la sección de grupo, introduciremos el grupo correspondiente para visualizar únicamente los mensajes de ese grupo.
 <img width="1111" height="434" alt="image" src="https://github.com/user-attachments/assets/a655e51a-86a0-496c-b58f-b71921569854" />
 
 ---------------------------------
