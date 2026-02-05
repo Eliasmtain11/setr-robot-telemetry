@@ -40,7 +40,7 @@ http://<IP>:1880
 ```
 
 ## Cargar SETR-telemetry
-Para cargar la interfaz del coche pulsaremos a las **3 rayitas**, después importar y buscaremos el archivo `SETR-telemetry.json`, despues le daremos a **instalar todo**.
+Para cargar la interfaz del coche pulsaremos al icono de las **3 rayitas**, después **importar** y buscaremos el archivo `SETR-telemetry.json`, despues le daremos a **instalar todo**.
 <img width="1914" height="600" alt="image" src="https://github.com/user-attachments/assets/5acf0543-3c91-44f5-ab82-744c25c36e26" />
 
 Una vez cargado el archivo pulsaremos al boton de **Instanciar/Deploy**
