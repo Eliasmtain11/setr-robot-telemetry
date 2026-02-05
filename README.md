@@ -37,8 +37,11 @@ $ ifconfig
 Buscaremos la `wlo1` y pondremos en el buscador la **ip** que nos aparece en `inet`
 
 ## Cargar SETR-telemetry
-Para cargar la interfaz del coche pulsaremos a las 3 rayitas, después importar y buscaremos el archivo **SETR-telemetry.json**, despues pulsaremos **Instanciar** para ejecutarlo.
+Para cargar la interfaz del coche pulsaremos a las 3 rayitas, después importar y buscaremos el archivo **SETR-telemetry.json**, despues le daremos a instalar todo.
 <img width="1914" height="600" alt="image" src="https://github.com/user-attachments/assets/5acf0543-3c91-44f5-ab82-744c25c36e26" />
+
+Una vez cargado el archivo pulsaremos al boton de **Instanciar/Deploy**
+<img width="1632" height="682" alt="image" src="https://github.com/user-attachments/assets/69f8e1c0-2ea9-4484-bdb8-019c2d943c95" />
 
 ## Uso de la interfaz
 Para hacer uso cambiaremos `http://127.0.0.1:1880/#flow/91d8e7385a2e2b66` por `http://127.0.0.1:1880/ui` y en la parte de grupo seleccionaremos el grupo para leer solo los mensajes de ese grupo.
