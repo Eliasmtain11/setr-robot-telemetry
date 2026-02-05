@@ -50,6 +50,6 @@ Una vez cargado el archivo pulsaremos al boton de **Instanciar/Deploy**
 Para hacer uso de la interfaz, cambiaremos `http://127.0.0.1:1880/#flow/91d8e7385a2e2b66` por `http://127.0.0.1:1880/ui`, en la sección de grupo, introduciremos el grupo correspondiente para visualizar únicamente los mensajes de ese grupo.
 <img width="1028" height="460" alt="image" src="https://github.com/user-attachments/assets/3ec3e4e6-d4db-4a02-a5c2-c0c536db2934" />
 
-
+-------------------------------
 ### Autor
 Elías Muñoz Tain - Grado en Ingeniería Robótica - URJC
