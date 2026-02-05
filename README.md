@@ -34,7 +34,10 @@ En caso de querer acceder desde otro ordenador ejecutaremos el comando
 ```bash
 $ ifconfig
 ```
-Buscaremos la `wlo1` y pondremos en el buscador la **ip** que nos aparece en `inet`
+Buscaremos la interfaz `wlo1` y tomaremos la IP que aparece en el campo `inet`, a continuación, la introducimos en el navegador con el puerto correspondiente
+```bash
+http://<IP>:1880
+```
 
 ## Cargar SETR-telemetry
 Para cargar la interfaz del coche pulsaremos a las **3 rayitas**, después importar y buscaremos el archivo `SETR-telemetry.json`, despues le daremos a **instalar todo**.
