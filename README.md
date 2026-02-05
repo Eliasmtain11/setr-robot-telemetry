@@ -44,6 +44,6 @@ Para cargar la interfaz del coche pulsaremos a las 3 rayitas, después importar 
 Para hacer uso cambiaremos `http://127.0.0.1:1880/#flow/91d8e7385a2e2b66` por `http://127.0.0.1:1880/ui` y en la parte de grupo seleccionaremos el grupo para leer solo los mensajes de ese grupo.
 <img width="1111" height="434" alt="image" src="https://github.com/user-attachments/assets/a655e51a-86a0-496c-b58f-b71921569854" />
 
+---------------------------------
 ### Autor
-Elías Muñoz Tain  
-Grado en Ingeniería Robótica - URJC
+Elías Muñoz Tain - Grado en Ingeniería Robótica - URJC
