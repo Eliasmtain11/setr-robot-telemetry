@@ -27,3 +27,4 @@ $ sudo npm install -g --unsafe-perm node-red
 ```bash
 $ node-red
 ```
+Una vez arrancado nos saldrá el mensaje `Server now running at http://127.0.0.1:1880/` entonces copiaremos esa `ip` en nuestro buscador y se abrirá la interfaz de **node-red**
