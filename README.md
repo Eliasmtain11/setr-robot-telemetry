@@ -8,16 +8,22 @@ Este repositorio contiene la configuración y las instrucciones necesarias para 
 ## Instalación
 1. Instalamos `Node.js` y `npm`
 ```bash
-sudo apt update
-sudo apt install nodejs npm
+$ sudo apt update
+$ sudo apt install nodejs npm
 ```
 Para comprobar que estan instalados 
 ```bash
-node -v
-npm -v
+$ node -v
+$ npm -v
 ```
 
 2. Instalamos `Node-RED`
 ```bash
-sudo npm install -g --unsafe-perm node-red
+$ sudo npm install -g --unsafe-perm node-red
+```
+
+## Uso
+1. Arrancamos `Node-RED` ejecutando el comando
+```bash
+$ node-red
 ```
