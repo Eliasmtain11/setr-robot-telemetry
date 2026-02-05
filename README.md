@@ -3,7 +3,7 @@
 ## Descripcion
 Este repositorio contiene la configuración y las instrucciones necesarias para desplegar un sistema de telemetría de robots utilizando Node-RED. El proyecto permite la recepción de datos en tiempo real mediante MQTT, su procesamiento mediante flujos visuales y su visualización a través de una interfaz gráfica (Dashboard) accesible desde un navegador web.
 
-<img width="1268" height="633" alt="image" src="https://github.com/user-attachments/assets/88213906-4068-4c62-b805-2823dcb95b1e" />
+<img width="1161" height="552" alt="image" src="https://github.com/user-attachments/assets/fed1930d-91c8-446a-9b79-3a17b3a0cbce" />
 
 ## Instalación
 1. Instalamos `Node.js` y `npm`
