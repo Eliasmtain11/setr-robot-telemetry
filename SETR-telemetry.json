@@ -1,0 +1,413 @@
+[
+    {
+        "id": "91d8e7385a2e2b66",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3913747b41da4b52",
+        "type": "mqtt in",
+        "z": "91d8e7385a2e2b66",
+        "name": "Servidor In JSON ",
+        "topic": "/SETR/2026/+",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "b09e28dc5dea2046",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 440,
+        "wires": [
+            [
+                "c6916b17d89b0e3c"
+            ]
+        ]
+    },
+    {
+        "id": "14dd78733b86cbd4",
+        "type": "json",
+        "z": "91d8e7385a2e2b66",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 490,
+        "y": 440,
+        "wires": [
+            [
+                "764712545b673160",
+                "2cf4eccccb54427e"
+            ]
+        ]
+    },
+    {
+        "id": "764712545b673160",
+        "type": "switch",
+        "z": "91d8e7385a2e2b66",
+        "name": "",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OBSTACLE_DETECTED",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "END_LAP",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "VISIBLE_LINE",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 630,
+        "y": 440,
+        "wires": [
+            [
+                "859bbb30cb0d84dd"
+            ],
+            [
+                "046c8bc743e7d15c"
+            ],
+            [
+                "fe3e0725471d2579"
+            ]
+        ]
+    },
+    {
+        "id": "859bbb30cb0d84dd",
+        "type": "change",
+        "z": "91d8e7385a2e2b66",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.distance",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 380,
+        "wires": [
+            [
+                "836876c02a0a6050"
+            ]
+        ]
+    },
+    {
+        "id": "046c8bc743e7d15c",
+        "type": "change",
+        "z": "91d8e7385a2e2b66",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.time",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 440,
+        "wires": [
+            [
+                "0a35dc425136d824"
+            ]
+        ]
+    },
+    {
+        "id": "fe3e0725471d2579",
+        "type": "change",
+        "z": "91d8e7385a2e2b66",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.value",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 500,
+        "wires": [
+            [
+                "fb6c6c8237355d7c"
+            ]
+        ]
+    },
+    {
+        "id": "fb6c6c8237355d7c",
+        "type": "ui_gauge",
+        "z": "91d8e7385a2e2b66",
+        "name": "Donut value 11",
+        "group": "4c5288270d153a6a",
+        "order": 4,
+        "width": 7,
+        "height": 5,
+        "gtype": "gage",
+        "title": "Path_covered",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ff0000",
+            "#e6e600",
+            "#00ff00"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1100,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "0a35dc425136d824",
+        "type": "function",
+        "z": "91d8e7385a2e2b66",
+        "name": "function 2",
+        "func": "let t = Number(msg.payload);  // ahora es 3220 directamente\n\nif (isNaN(t)) {\n    msg.payload = { formatted: \"0,000\" };\n    return msg;\n}\n\nlet seconds = Math.floor(t / 1000);\nlet decimals = t % 1000;\nlet decimalsStr = decimals.toString().padStart(3, '0');\n\nmsg.payload = {\n    formatted: `${seconds},${decimalsStr}`\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 440,
+        "wires": [
+            [
+                "ec5d521e159cfd6b"
+            ]
+        ]
+    },
+    {
+        "id": "836876c02a0a6050",
+        "type": "ui_template",
+        "z": "91d8e7385a2e2b66",
+        "group": "4c5288270d153a6a",
+        "name": "Distance_to_object 11",
+        "order": 5,
+        "width": 7,
+        "height": 5,
+        "format": "<div class=\"distance-card\">\n  <div class=\"dist-title\">Distance to obstacle</div>\n\n  <!-- BARRA -->\n  <div class=\"bar-container\">\n    <div class=\"bar-fill\" style=\"width: {{(msg.payload/15)*100}}%; background: {{barColor(msg.payload)}};\">\n    </div>\n  </div>\n\n  <!-- VALOR MOSTRADO -->\n  <div class=\"dist-value\">{{msg.payload}} cm</div>\n</div>\n\n<style>\n  .distance-card {\n    padding: 16px;\n    background: #ffffff;\n    border-radius: 10px;\n    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);\n    text-align: center;\n    font-family: system-ui, sans-serif;\n  }\n\n  .dist-title {\n    font-size: 18px;\n    font-weight: 600;\n    margin-bottom: 10px;\n  }\n\n  .bar-container {\n    width: 100%;\n    height: 20px;\n    background: #e0e0e0;\n    border-radius: 10px;\n    overflow: hidden;\n  }\n\n  .bar-fill {\n    height: 100%;\n    transition: width 0.4s ease-out, background 0.4s ease-out;\n  }\n\n  .dist-value {\n    margin-top: 10px;\n    font-size: 22px;\n    font-weight: bold;\n    color: #333;\n  }\n</style>\n\n<script>\n  (function(scope) {\n\n    scope.barColor = function(val) {\n\n      // 0–5: rojo\n      if (val < 5) {\n        return \"rgb(255, 0, 0)\";\n      }\n\n      // 5–8: verde\n      if (val >= 5 && val <= 8) {\n        return \"rgb(0, 255, 0)\";\n      }\n\n      // 8–15: rojo\n      if (val > 8 && val <= 15) {\n        return \"rgb(255, 0, 0)\";\n      }\n\n      // >15: rojo también\n      return \"rgb(255, 0, 0)\";\n    };\n\n  })(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1120,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ec5d521e159cfd6b",
+        "type": "ui_template",
+        "z": "91d8e7385a2e2b66",
+        "group": "4c5288270d153a6a",
+        "name": "Lap_time 11",
+        "order": 6,
+        "width": 7,
+        "height": 5,
+        "format": "<div class=\"lap-card\">\n  <div class=\"lap-title\">Lap time</div>\n\n  <div class=\"lap-circle\">\n    <div class=\"lap-text\">\n      <span class=\"lap-value\">{{msg.payload.formatted}}</span>\n      <span class=\"unit\">s</span>\n    </div>\n  </div>\n</div>\n\n<style>\n  .lap-card {\n    padding: 16px;\n    background: #ffffff;\n    border-radius: 12px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n    text-align: center;\n    font-family: system-ui, sans-serif;\n  }\n\n  /* Título negro */\n  .lap-title {\n    font-size: 16px;\n    font-weight: 600;\n    margin-bottom: 12px;\n    color: #000000;\n  }\n\n  .lap-circle {\n    width: 140px;\n    height: 140px;\n    margin: 0 auto;\n    border-radius: 50%;\n    border: 5px solid #000000;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .lap-text {\n    display: flex;\n    align-items: baseline;\n    justify-content: center;\n  }\n\n  .lap-value {\n    font-size: 32px;\n    font-weight: 700;\n    color: #000000;\n  }\n\n  .unit {\n    font-size: 18px;\n    margin-left: 6px;\n    /* espacio antes de la s */\n    font-weight: 500;\n    color: #000000;\n  }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1250,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2cf4eccccb54427e",
+        "type": "ui_text",
+        "z": "91d8e7385a2e2b66",
+        "group": "4c5288270d153a6a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Team_name: ",
+        "format": "{{msg.payload.team_name}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 830,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "343bd9d632378dba",
+        "type": "ui_text_input",
+        "z": "91d8e7385a2e2b66",
+        "name": "",
+        "label": "Grupo",
+        "tooltip": "",
+        "group": "4c5288270d153a6a",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "aec2f0d6f449a6c8"
+            ]
+        ]
+    },
+    {
+        "id": "aec2f0d6f449a6c8",
+        "type": "function",
+        "z": "91d8e7385a2e2b66",
+        "name": "Seleccion de Grupo",
+        "func": "const g = String(msg.payload || \"\").trim();\nif (!g) return null;\n\nglobal.set(\"grupoActual\", g);\n\n// opcional: para depurar\nmsg.payload = `Grupo actual: ${g}`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6916b17d89b0e3c",
+        "type": "function",
+        "z": "91d8e7385a2e2b66",
+        "name": "Filtrar Grupo",
+        "func": "const grupoSel = global.get(\"grupoActual\");\nif (!grupoSel) return null; // si no has elegido grupo en la UI, no pasa nada\n\n// topic esperado: /SETR/2025/<grupo>/...\nconst partes = (msg.topic || \"\").split(\"/\");\nconst grupoTopic = partes[3]; // [\"\", \"SETR\", \"2025\", \"8\", ...]\n\nif (String(grupoTopic) === String(grupoSel)) {\n    return msg; // solo deja pasar ese grupo\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "14dd78733b86cbd4"
+            ]
+        ]
+    },
+    {
+        "id": "e281b0dc73493b93",
+        "type": "ui_spacer",
+        "z": "91d8e7385a2e2b66",
+        "name": "spacer",
+        "group": "4c5288270d153a6a",
+        "order": 2,
+        "width": 18,
+        "height": 1
+    },
+    {
+        "id": "b09e28dc5dea2046",
+        "type": "mqtt-broker",
+        "name": "Servidor ",
+        "broker": "193.147.79.118",
+        "port": "21883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4c5288270d153a6a",
+        "type": "ui_group",
+        "name": "Datos Robot",
+        "tab": "1b9a92af9513873e",
+        "order": 1,
+        "disp": true,
+        "width": "21",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1b9a92af9513873e",
+        "type": "ui_tab",
+        "name": "SETR",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ee437a4bb851308a",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
