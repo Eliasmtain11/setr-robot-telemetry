@@ -32,7 +32,7 @@ Una vez arrancado nos saldrá el mensaje `Server now running at http://127.0.0.1
 ### Acceso desde otro ordenador
 En caso de querer acceder desde otro ordenador ejecutaremos el comando
 ```bash
-ifconfig
+$ ifconfig
 ```
 Buscaremos la `wlo1` y pondremos en el buscador la **ip** que nos aparece en `inet`
 
